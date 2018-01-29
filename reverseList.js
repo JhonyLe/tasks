@@ -12,4 +12,4 @@ function reverse(list) {
     }
 }
 
-console.log(reverse(list));
+console.log(JSON.stringify(reverse(list)));
