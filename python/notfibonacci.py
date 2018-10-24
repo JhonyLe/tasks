@@ -2,10 +2,13 @@ def fibonacci():
     yield 0
     yield 1
 
-    lst = [0, 1]
+    two_value_ago = 0
+    one_value_ago = 1
+
     while True:
-        lst.append(lst[len(lst) - 1] + lst[len(lst) - 2])
-        yield lst[len(lst) - 1]
+        new_value = two_value_ago + one_value_ago
+        two_value_ago, one_value_ago = one_value_ago, new_value
+        yield new_value
 
 def notfibonacci():
     num = 1
@@ -21,6 +24,16 @@ def notfibonacci():
             fibonacci_num = next(f)
         num += 1
 
+
+print('Fibonacci: ')
+
+fFibonacci = fibonacci();
+lstFibonacci = []
+for i in range(30):
+    lstFibonacci.append(next(fFibonacci))
+print(lstFibonacci)
+
+print('Not fibonacci: ')
 f = notfibonacci();
 
 lst = []
